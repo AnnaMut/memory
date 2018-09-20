@@ -1,0 +1,30 @@
+{
+  "name": "Memory",
+  "version": "5.0.0",
+  "private": true,
+  "description": "браузерная игра «Memory»",
+  "scripts": {
+    "eslint": "eslint ./gulpfile.js js/",
+    "build": "gulp build",
+    "start": "gulp serve",
+    "test": "npm run eslint && gulp test"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.0.2",
+    "browser-sync": "2.24.6",
+    "del": "3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-htmlacademy": "0.5.x",
+    "gulp": "3.9.1",
+    "gulp-better-rollup": "3.3.0",
+    "gulp-imagemin": "4.1.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-rename": "1.4.0",
+    "gulp-sourcemaps": "2.6.4",
+    "gulp-svgstore": "6.1.1",
+    "stylelint-config-htmlacademy": "0.1.x"
+  },
+  "engines": {
+    "node": "8"
+  }
+}
