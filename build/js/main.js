@@ -14,30 +14,50 @@
     mainElement.appendChild(element);
   };
 
-  const content = `<section class="game-page">
+  var header = (state) => `<section class="game-page">
 <header class="game-header">
   <a class="replay-link" href="#">Начать заново</a>
-  <p class="game-point">Очки:</p>
-</header>
+  <p class="game-point">Очки: ${state.score}</p>
+</header>`;
+
+  const CARDS_COUNT = 18;
+
+  const getRandomFromInterval = function (min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
+  const getImgScr = ()=> {
+    const src = [];
+    for (let i = 0; i <= 8; i++) {
+      src.push(getRandomFromInterval(1, 52));
+    }
+    return src;
+  };
+
+  const cardsNumber = getImgScr();
+  const allcardsNumber = [...cardsNumber, ...cardsNumber];
+
+  const getCardsSrc = ()=> {
+    const imgSrc = [];
+    for (let i = 0; i < CARDS_COUNT; i++) {
+      imgSrc[i] = `img/${allcardsNumber[i]}.png`;
+    }
+    return imgSrc;
+  };
+
+  const initialState = {
+    score: 0,
+    time: 0,
+    scr: getCardsSrc()
+  };
+
+  const content = `<section class="game-page">
+${header(initialState)}
 <ul class="game-list">
-  <li><img class="close" src="img/closeCard.png" width="110" height="275" alt="Закрытая карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+  ${[...(initialState.scr)].map((i) => {
+    return `<li><img src="${i}" width="110" height="275" alt="Карта"></li>`;
+  }
+  ).join(``)}
 </ul>
 </section>`;
 

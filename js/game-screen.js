@@ -1,30 +1,15 @@
 import {getElementFromTemplate, changeScreen} from './render';
 import welcomeScreen from './welcome-screen';
+import header from './header';
+import {initialState} from './game-data';
 
 const content = `<section class="game-page">
-<header class="game-header">
-  <a class="replay-link" href="#">Начать заново</a>
-  <p class="game-point">Очки:</p>
-</header>
+${header(initialState)}
 <ul class="game-list">
-  <li><img class="close" src="img/closeCard.png" width="110" height="275" alt="Закрытая карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
-  <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+  ${[...(initialState.scr)].map((i) => {
+    return `<li><img src="${i}" width="110" height="275" alt="Карта"></li>`;
+  }
+  ).join(``)}
 </ul>
 </section>`;
 
