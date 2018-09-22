@@ -1,7 +1,9 @@
 import {getElementFromTemplate, changeScreen} from './render';
 import gameScreen from './game-screen';
+import {initialState} from './game-data';
 
-const content = `<section class="start-page">
+export default () => {
+  const content = `<section class="start-page">
 <a class="start-img" href="#">
   <img src="img/StartGame.png" width="503" height="262" alt="Раскладка карт">
 </a>
@@ -9,14 +11,15 @@ const content = `<section class="start-page">
 <button class="start-button" type="button">Начать игру</button>  
 </section>`;
 
-const welcomeScreen = getElementFromTemplate(content);
+  const welcomeScreen = getElementFromTemplate(content);
 
-const startButton = welcomeScreen.querySelector(`.start-button`);
+  const startButton = welcomeScreen.querySelector(`.start-button`);
 
-const startButtonClickHandler = ()=> {
-  changeScreen(gameScreen);
+  const startButtonClickHandler = ()=> {
+    changeScreen(gameScreen(initialState));
+  };
+
+  startButton.addEventListener(`click`, startButtonClickHandler);
+
+  return welcomeScreen;
 };
-
-startButton.addEventListener(`click`, startButtonClickHandler);
-
-export default welcomeScreen;

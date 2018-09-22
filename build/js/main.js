@@ -51,27 +51,61 @@
     scr: getCardsSrc()
   };
 
-  const content = `<section class="game-page">
-${header(initialState)}
+  const ONE_SECOND = 1000;
+
+  var gameScreen = (state) => {
+    const content = `<section class="game-page">
+${header(state)}
 <ul class="game-list">
   ${[...(initialState.scr)].map((i) => {
-    return `<li><img src="${i}" width="110" height="275" alt="Карта"></li>`;
+    return `<li><img class="close visually-hidden" src="img/closeCard.png" width="110" height="275" alt="Закрытая карта"><img class="open" src="${i}" width="110" height="275" alt="Карта"></li>`;
   }
   ).join(``)}
 </ul>
 </section>`;
 
-  const gameScreen = getElementFromTemplate(content);
+    const tick = () => {
+      state.time++;
+    };
 
-  const replayButton = gameScreen.querySelector(`.replay-link`);
+    const stopTimer = ()=> {
+      clearTimeout(state.time);
+    };
 
-  const replayButtonClickHandler = ()=> {
-    changeScreen(welcomeScreen);
+    const startTimer = () => {
+      const time = setTimeout(() => {
+        tick();
+        startTimer();
+        if (time > 10) {
+          stopTimer();
+          document.querySelectorAll(`.close`).forEach((item) => {
+            item.classList.remove(`visually-hidden`);
+          });
+          document.querySelectorAll(`.open`).forEach((item) => {
+            item.classList.add(`visually-hidden`);
+          });
+        }
+      }, ONE_SECOND);
+    };
+
+    startTimer();
+
+    const gameScreen = getElementFromTemplate(content);
+
+    const replayButton = gameScreen.querySelector(`.replay-link`);
+
+    const replayButtonClickHandler = ()=> {
+      stopTimer();
+      changeScreen(welcomeScreen());
+    };
+
+    replayButton.addEventListener(`click`, replayButtonClickHandler);
+
+    return gameScreen;
   };
 
-  replayButton.addEventListener(`click`, replayButtonClickHandler);
-
-  const content$1 = `<section class="start-page">
+  var welcomeScreen = () => {
+    const content = `<section class="start-page">
 <a class="start-img" href="#">
   <img src="img/StartGame.png" width="503" height="262" alt="Раскладка карт">
 </a>
@@ -79,17 +113,20 @@ ${header(initialState)}
 <button class="start-button" type="button">Начать игру</button>  
 </section>`;
 
-  const welcomeScreen = getElementFromTemplate(content$1);
+    const welcomeScreen = getElementFromTemplate(content);
 
-  const startButton = welcomeScreen.querySelector(`.start-button`);
+    const startButton = welcomeScreen.querySelector(`.start-button`);
 
-  const startButtonClickHandler = ()=> {
-    changeScreen(gameScreen);
+    const startButtonClickHandler = ()=> {
+      changeScreen(gameScreen(initialState));
+    };
+
+    startButton.addEventListener(`click`, startButtonClickHandler);
+
+    return welcomeScreen;
   };
 
-  startButton.addEventListener(`click`, startButtonClickHandler);
-
-  changeScreen(welcomeScreen);
+  changeScreen(welcomeScreen());
 
 }());
 
