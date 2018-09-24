@@ -24,10 +24,10 @@ ${header(state)}
   };
 
   const startTimer = () => {
-    const time = setTimeout(() => {
+    state.time = setTimeout(() => {
       tick();
       startTimer();
-      if (time > 10) {
+      if (state.time > 10) {
         stopTimer();
         document.querySelectorAll(`.close`).forEach((item) => {
           item.classList.remove(`visually-hidden`);
@@ -51,6 +51,38 @@ ${header(state)}
   };
 
   replayButton.addEventListener(`click`, replayButtonClickHandler);
+
+  const openCardClickHandler = (evt) => {
+    stopTimer();
+    evt.target.classList.add(`visually-hidden`);
+    evt.target.nextElementSibling.classList.remove(`visually-hidden`);
+    evt.target.parentElement.classList.add(`choose`);
+  };
+
+  gameScreen.querySelectorAll(`.close`).forEach((item) => {
+    item.addEventListener(`click`, openCardClickHandler);
+  });
+
+  const checkCardsHandler = ()=> {
+    let ch = gameScreen.querySelectorAll(`.choose img:not(.visually-hidden):not(.hidden)`);
+    if (ch && ch.length) {
+      if ((ch[0].src === ch[1].src)) {
+        state.score += (gameScreen.querySelectorAll(`.close`).length * 42);
+        ch.forEach((item) => {
+          item.classList.add(`hidden`);
+        });
+      } else {
+        state.score -= 84;
+        ch.forEach((item) => {
+          item.parentElement.classList.remove(`choose`);
+          item.classList.add(`visually-hidden`);
+          item.previousElementSibling.classList.remove(`visually-hidden`);
+        });
+      }
+    }
+  };
+
+  gameScreen.addEventListener(`click`, checkCardsHandler);
 
   return gameScreen;
 };
