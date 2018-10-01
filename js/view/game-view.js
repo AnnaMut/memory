@@ -22,6 +22,8 @@ export default class GameView extends AbstractView {
 
   openCardClickHandler() {}
 
+  updateHeader() {}
+
   bind() {
     this.element.insertBefore(getElementFromTemplate(header(this.state)), this.element.firstChild);
 
@@ -30,6 +32,10 @@ export default class GameView extends AbstractView {
     replayButton.addEventListener(`click`, () => {
       this.replayButtonClickHandler();
     });
+
+    this.updateHeader = (somestate) => {
+      this.element.replaceChild(getElementFromTemplate(header(somestate)), this.element.firstChild);
+    };
 
     this.element.querySelectorAll(`.close`).forEach((item) => {
       item.addEventListener(`click`, (evt) => {
