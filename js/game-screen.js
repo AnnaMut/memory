@@ -1,8 +1,8 @@
 import {changeScreen} from './render';
 import welcomeScreen from './welcome-screen';
 import GameView from './view/game-view';
-
 import {initialState} from './game-data';
+
 const ONE_SECOND = 1000;
 
 export default (state) => {
@@ -41,11 +41,11 @@ export default (state) => {
     card.nextElementSibling.classList.toggle(`visually-hidden`);
     card.parentElement.classList.toggle(`choose`);
 
-    let choosenCards = screen.querySelectorAll(`.choose img:not(.visually-hidden):not(.hidden)`);
+    let choosenCards = document.querySelectorAll(`.choose img:not(.visually-hidden):not(.hidden)`);
     let newScore;
     if (choosenCards && choosenCards.length) {
       if ((choosenCards[0].src === choosenCards[1].src)) {
-        newScore = screen.querySelectorAll(`.close`).length * 42;
+        newScore = document.querySelectorAll(`.close`).length * 42;
         choosenCards.forEach((item) => {
           item.classList.add(`hidden`);
         });
@@ -60,12 +60,13 @@ export default (state) => {
         }, ONE_SECOND);
       }
     }
-    // const newState = Object.assign({}, initialState, {score: state.score + newScore});
+    const newState = Object.assign({}, initialState, {score: state.score + newScore});
+    screen.updateHeader(newState);
   };
 
   screen.replayButtonClickHandler = () => {
     stopTimer();
-    changeScreen(welcomeScreen());
+    changeScreen(welcomeScreen(initialState));
   };
 
   return screen.element;
