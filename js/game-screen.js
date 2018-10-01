@@ -70,12 +70,12 @@ export default (state) => {
     let newScore;
     if (choosenCards && choosenCards.length) {
       if ((choosenCards[0].src === choosenCards[1].src)) {
-        newScore = state.score + (gameScreen.querySelectorAll(`.close`).length * 42);
+        newScore = gameScreen.querySelectorAll(`.close`).length * 42;
         choosenCards.forEach((item) => {
           item.classList.add(`hidden`);
         });
       } else {
-        newScore = state.score - 84;
+        newScore = -84;
         setTimeout(() =>{
           choosenCards.forEach((item) => {
             item.parentElement.classList.remove(`choose`);
@@ -85,7 +85,7 @@ export default (state) => {
         }, ONE_SECOND);
       }
     }
-    const newState = Object.assign({}, initialState, {score: newScore});
+    const newState = Object.assign({}, initialState, {score: state.score + newScore});
     updateHeader(newState);
     choosenCards.forEach((item) => {
       item.removeEventListener(`click`, openCardClickHandler);
