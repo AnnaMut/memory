@@ -29,4 +29,3 @@ export const initialState = {
   scr: getCardsSrc()
 };
 
-
