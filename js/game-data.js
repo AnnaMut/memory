@@ -1,4 +1,4 @@
-const CARDS_COUNT = 18;
+export const CARDS_COUNT = 18;
 
 const getRandomFromInterval = function (min, max) {
   return Math.floor(Math.random() * (max - min) + min);

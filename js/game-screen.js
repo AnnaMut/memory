@@ -40,7 +40,13 @@ export default (state) => {
     card.classList.toggle(`visually-hidden`);
     card.nextElementSibling.classList.toggle(`visually-hidden`);
     card.parentElement.classList.toggle(`choose`);
-
+    //var a;
+    //if (navigator.userAgent.search(/Chrome/) > 0) {
+    //  a = 2;
+    //} else {
+    //  a= 1;
+   // }
+    //alert(a);
     let choosenCards = document.querySelectorAll(`.choose img:not(.visually-hidden):not(.hidden)`);
     let newScore;
     if (choosenCards && choosenCards.length) {
