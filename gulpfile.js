@@ -5,6 +5,7 @@ const server = require(`browser-sync`).create();
 const imagemin = require(`gulp-imagemin`);
 const rollup = require(`gulp-better-rollup`);
 const sourcemaps = require(`gulp-sourcemaps`);
+var ghpages = require("gh-pages");
 
 gulp.task(`style`, () => {
   return gulp.src(`css/style.css`).
@@ -81,3 +82,5 @@ gulp.task(`build`, [`assemble`], () => {
 
 gulp.task(`test`, () => {
 });
+
+ghpages.publish(`build`);
