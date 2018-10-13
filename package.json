@@ -1,6 +1,5 @@
 {
   "name": "Memory",
-  "version": "5.0.0",
   "private": false,
   "description": "игра на память",
   "scripts": {
