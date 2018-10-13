@@ -8,3 +8,4 @@ env:
   commonjs: true
   mocha: true
 
+extends: 'htmlacademy/es6'

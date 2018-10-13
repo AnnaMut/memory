@@ -5,11 +5,15 @@ const server = require(`browser-sync`).create();
 const imagemin = require(`gulp-imagemin`);
 const rollup = require(`gulp-better-rollup`);
 const sourcemaps = require(`gulp-sourcemaps`);
+// const mocha = require(`gulp-mocha`);
+// const commonjs = require(`rollup-plugin-commonjs`);
 const ghpages = require(`gh-pages`);
 
 gulp.task(`style`, () => {
   return gulp.src(`css/style.css`).
-    pipe(gulp.dest(`build/css`));
+    pipe(plumber()).
+    pipe(gulp.dest(`build/css`)).
+    pipe(server.stream());
 });
 
 gulp.task(`scripts`, () => {
@@ -21,14 +25,13 @@ gulp.task(`scripts`, () => {
     .pipe(gulp.dest(`build/js`));
 });
 
-gulp.task(`images`, () => {
-  return gulp.src(`src/img/**/*.{png,jpg,gif}`)
-    .pipe(imagemin([
-      imagemin.gifsicle(),
+gulp.task(`imagemin`, [`copy`], () => {
+  return gulp.src(`build/img/**/*.{jpg,png,gif}`).
+    pipe(imagemin([
       imagemin.optipng({optimizationLevel: 3}),
       imagemin.jpegtran({progressive: true})
-    ]))
-    .pipe(gulp.dest(`build/img`));
+    ])).
+    pipe(gulp.dest(`build/img`));
 });
 
 gulp.task(`copy-html`, () => {
@@ -37,7 +40,7 @@ gulp.task(`copy-html`, () => {
     pipe(server.stream());
 });
 
-gulp.task(`copy`, [`copy-html`, `scripts`, `style`, `images`], () => {
+gulp.task(`copy`, [`copy-html`, `scripts`, `style`], () => {
   return gulp.src([
     `fonts/**/*.{woff,woff2}`,
     `img/*.*`
@@ -77,8 +80,9 @@ gulp.task(`assemble`, [`clean`], () => {
 });
 
 gulp.task(`build`, [`assemble`], () => {
-  gulp.start(`images`);
+  gulp.start(`imagemin`);
 });
+
 
 gulp.task(`test`, () => {
 });
