@@ -1,5 +1,6 @@
 {
   "name": "Memory",
+  "license": "ISC",
   "private": false,
   "description": "игра на память",
   "scripts": {
