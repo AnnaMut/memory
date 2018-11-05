@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<main class="central">
+</main>
+
+<template id="start">
+  <section class="start-page">
+    <a class="start-img" href="#">
+      <img src="img/StartGame.png" width="503" height="262" alt="Раскладка карт">
+    </a>
+    <h2 class="start-title">MEMORY GAME</h2>
+    <button class="start-button" type="button">Начать игру</button>  
+  </section>
+</template>
+
+<template id="game">
+    <section class="game-page">
+      <header class="game-header">
+        <a class="replay-link" href="#">Начать заново</a>
+        <p class="game-point">Очки:</p>
+      </header>
+      <ul class="game-list">
+        <li><img class="close visually-hidden" src="img/closeCard.png" width="110" height="275" alt="Закрытая карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+        <li><img src="img/5H.png" width="110" height="275" alt="Карта"></li>
+      </ul>
+    </section>
+</template>
+
+<template id="stats">
+ <section class="stats-page">
+    <a class="stats-img" href="#">
+      <img src="img/stats.png" width="516" height="275" alt="Раскладка карт">
+    </a>
+   <p class="stats-title">Поздравляем!</p> 
+   <p class="stats-stats">Ваш итоговый счет:</p>
+   <button class="stats-button" type="button">Еще раз</button>   
+ </section>
+</template>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
