@@ -28,7 +28,7 @@
     "gulp-rename": "1.4.0",
     "gulp-sourcemaps": "2.6.4",
     "rollup-plugin-commonjs": "9.2.0",
-    "stylelint": "~9.7.0"
+    "stylelint": "~9.8.0"
   },
   "engines": {
     "node": "8"
