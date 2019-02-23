@@ -27,7 +27,7 @@
     "gulp-plumber": "1.2.1",
     "gulp-rename": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
-    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-commonjs": "9.2.1",
     "stylelint": "~9.10.0"
   },
   "engines": {
