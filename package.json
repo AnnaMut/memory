@@ -20,7 +20,7 @@
     "eslint-config-htmlacademy": "0.5.x",
     "gh-pages": "2.0.1",
     "gulp": "4.0.0",
-    "gulp-better-rollup": "4.0.0",
+    "gulp-better-rollup": "4.0.1",
     "gulp-csso": "3.0.1",
     "gulp-imagemin": "5.0.0",
     "gulp-mocha": "6.0.0",
