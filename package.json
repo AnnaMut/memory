@@ -11,7 +11,7 @@
     "test": "npm run eslint && gulp test"
   },
   "devDependencies": {
-    "autoprefixer": "9.4.9",
+    "autoprefixer": "9.4.10",
     "browser-sync": "2.26.1",
     "chai": "4.2.0",
     "css-mqpacker": "7.0.0",
