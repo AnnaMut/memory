@@ -1,3 +1,4 @@
+
 {
   "name": "Memory",
   "license": "ISC",
@@ -15,9 +16,8 @@
     "browser-sync": "2.26.1",
     "chai": "4.2.0",
     "css-mqpacker": "7.0.0",
-    "del": "4.1.0",
+    "del": "4.0.0",
     "eslint": "5.15.3",
-
     "eslint-config-htmlacademy": "0.5.x",
     "gh-pages": "2.0.1",
     "gulp": "4.0.0",
@@ -28,10 +28,11 @@
     "gulp-plumber": "1.2.1",
     "gulp-rename": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
-    "rollup-plugin-commonjs": "9.2.2",
+    "rollup-plugin-commonjs": "9.2.3",
     "stylelint": "~9.10.0"
   },
   "engines": {
     "node": "8"
   }
 }
+
