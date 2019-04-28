@@ -16,7 +16,7 @@
     "browser-sync": "2.26.5",
     "chai": "4.2.0",
     "css-mqpacker": "7.0.0",
-    "del": "4.0.0",
+    "del": "4.1.1",
     "eslint": "5.15.3",
     "eslint-config-htmlacademy": "0.5.x",
     "gh-pages": "2.0.1",
